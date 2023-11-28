@@ -16,5 +16,7 @@ public class Trainer {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int trainerId;
+	private String name;
 	private String password;
+	private String roles;
 }

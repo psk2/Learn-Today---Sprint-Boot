@@ -9,5 +9,7 @@ import com.learntoday.entity.Trainer;
 public interface TrainerRepository extends JpaRepository<Trainer, Integer>{
 
 	Optional<Trainer> getByTrainerId(int trainerId);
+	
+	Optional<Trainer> findByName(String trainerName);
 
 }
