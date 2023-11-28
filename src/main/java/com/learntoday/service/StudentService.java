@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import com.learntoday.DTO.StudentDto;
 import com.learntoday.entity.Student;
 import com.learntoday.exceptions.StudentEnrollmentFailedException;
 import com.learntoday.exceptions.StudentNotFoundException;
@@ -25,8 +26,12 @@ public class StudentService {
 		this.studentRepo = studentRepo;
 	}
 
-	public ResponseEntity<ResponseMessage> enrollCourse(Student student) {
+	public ResponseEntity<ResponseMessage> enrollCourse(StudentDto stu) {
 		try {
+			Student student = new Student();
+			student.setCourseId(stu.getCourseId());
+			student.setEnrollmentId(stu.getEnrollmentId());
+			
 			studentRepo.save(student);
 
 			ResponseMessage response = new ResponseMessage();
@@ -46,7 +51,7 @@ public class StudentService {
 			studentRepo.deleteByEnrollmentId(eid);
 			
 			ResponseMessage response = new ResponseMessage();
-			response.setMessage("Course created successfully");
+			response.setMessage("Student Enrollment removed successfully");
 			
 			return new ResponseEntity<ResponseMessage>(response, HttpStatus.CREATED);
 		} else {

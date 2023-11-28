@@ -1,5 +1,6 @@
 package com.learntoday.DTO;
 
+import jakarta.validation.constraints.NotEmpty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -8,6 +9,11 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class TrainerDto {
-	private int trainerId;
+
+	@NotEmpty
 	private String password;
+	@NotEmpty
+	private String name;
+	@NotEmpty
+	private String roles;
 }

@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import com.learntoday.DTO.TrainerDto;
 import com.learntoday.entity.Trainer;
 import com.learntoday.exceptions.CreateTrainerException;
 import com.learntoday.model.ResponseMessage;
@@ -25,8 +26,13 @@ public class TrainerService {
 		this.trainerRepo = trainerRepo;
 	}
 
-	public ResponseEntity<?> signUp(Trainer trainer) {
+	public ResponseEntity<?> signUp(TrainerDto trnr) {
 		try {
+			Trainer trainer = new Trainer();
+			trainer.setName(trnr.getName());
+			trainer.setPassword(trnr.getPassword());
+			trainer.setRoles(trnr.getRoles());
+			
 			trainerRepo.save(trainer);
 		} catch(Exception ex) {
 			LOGGER.error("--- Trainer creation Failed!! ---");

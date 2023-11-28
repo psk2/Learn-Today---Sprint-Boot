@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.learntoday.entity.Student;
+import com.learntoday.DTO.StudentDto;
 import com.learntoday.service.CourseService;
 import com.learntoday.service.StudentService;
 
@@ -34,7 +34,7 @@ public class StudentController {
 	
 
 	@PostMapping("/enroll")
-	public ResponseEntity<?> enrollCourse(@RequestBody Student student) {
+	public ResponseEntity<?> enrollCourse(@RequestBody StudentDto student) {
 		return stuService.enrollCourse(student);
 	}
 	

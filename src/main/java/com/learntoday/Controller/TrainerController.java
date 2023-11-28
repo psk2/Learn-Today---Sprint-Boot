@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.learntoday.DTO.TrainerDto;
 import com.learntoday.entity.Trainer;
 import com.learntoday.service.TrainerService;
 
@@ -24,7 +25,7 @@ public class TrainerController {
 	}
 
 	@PostMapping("/signUp")
-	public ResponseEntity<?> signUp(@RequestBody Trainer trainer) {
+	public ResponseEntity<?> signUp(@RequestBody TrainerDto trainer) {
 		return trainerService.signUp(trainer);
 	}
 	

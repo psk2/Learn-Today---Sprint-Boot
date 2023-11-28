@@ -47,7 +47,7 @@ public class SecurityConfiguration {
 				.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
 				.authorizeHttpRequests(authorize -> authorize
 //		      .requestMatchers(HttpMethod.POST, "/api/v1/signup", "/api/v1/signin").permitAll()
-						.requestMatchers(HttpMethod.POST, "/course/authenticate").permitAll()
+						.requestMatchers(HttpMethod.POST, "/api/authenticate", "/trainer/signUp").permitAll()
 						.requestMatchers(HttpMethod.GET, "/api/v1/test/**").permitAll().anyRequest().authenticated())
 				.addFilterBefore(authFilter, UsernamePasswordAuthenticationFilter.class);
 		http.httpBasic(Customizer.withDefaults());
