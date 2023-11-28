@@ -48,7 +48,10 @@ public class SecurityConfiguration {
 				.authorizeHttpRequests(authorize -> authorize
 //		      .requestMatchers(HttpMethod.POST, "/api/v1/signup", "/api/v1/signin").permitAll()
 						.requestMatchers(HttpMethod.POST, "/api/authenticate", "/trainer/signUp").permitAll()
-						.requestMatchers(HttpMethod.GET, "/api/v1/test/**").permitAll().anyRequest().authenticated())
+						.requestMatchers("/course/**","/student/**").hasAuthority("ROLE_ADMIN")
+						.requestMatchers("/course/all").hasAuthority("ROLE_TRAINER")
+						.anyRequest().authenticated())
+//						.requestMatchers(HttpMethod.GET, "/api/v1/test/**").permitAll()
 				.addFilterBefore(authFilter, UsernamePasswordAuthenticationFilter.class);
 		http.httpBasic(Customizer.withDefaults());
 		return http.build();
